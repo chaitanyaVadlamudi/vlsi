@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2 class="section-heading" ng-bind="main"></h2>
+            <hr class="primary">
+            <p ng-bind="description"></p>
+        </div>
+        <div ng-class="contact.bootstrap" ng-repeat="contact in contactDetails">
+            <h3 style="color:brown" ng-bind="contact.place"></h3>
+            <i class={{contact.fAPhone}}></i>
+            <p>General Enquiry: <span ng-bind="contact.generalPhone"></span></p>
+            <p>Sales Enquiry: <span ng-bind="contact.salesPhone"></span></p>
+            <i class={{contact.fAMap}}></i>
+            <address ng-bind="contact.address"></address>
+            <i class={{contact.fAMail}}></i>
+            <p>Enquiry: <a href="mailto:vguruhelp@skandvlsi.com"><span ng-bind="contact.generalMail"></span></a></p>
+            <p>Sales Enquiry: <a href="mailto:sales@skandvlsi.com"><span ng-bind="contact.salesMail"></span></a></p>
+        </div>
+    </div>
+</div>

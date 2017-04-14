@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading" ng-bind="main"></h2>
+            <hr class="primary">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 text-center" ng-repeat="service in services">
+            <div class="service-box">
+                <i class={{service.fontAwesome}}></i>
+                <h3 ng-bind="service.title"></h3>
+                <p class="text-muted" ng-bind="service.description"></p>
+            </div>
+        </div>
+    </div>
+</div>

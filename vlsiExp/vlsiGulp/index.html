@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="VLSI">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Skand VLSI</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="dist/creative.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="vendor/angular.js"></script>
+
+    <!-- Theme JavaScript -->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color:#DB7093" ng-controller="navbarCtrl">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top" ng-bind="brand"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-repeat="navItem in navItems">
+                        <a class="page-scroll" href="#{{navItem}}" ng-bind="navItem"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header ng-controller="carouselCtrl">
+        <div class="header">
+            <div class="header-content-inner carousel slide" id="images" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#images" ng-repeat="image in images" ng-class="{active: (image === 0)}" data-slide-to="{{image}}"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item" ng-class="{active:$index == 0}" ng-repeat="image in images">
+                        <img ng-src={{image.image}} alt="Huracan" width="1500" height="1200">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h2 ng-bind="image.title"></h2>
+                                <p ng-bind="image.description"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#images" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#images" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about" ng-controller="aboutCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading" ng-bind="main"></h2>
+                    <hr class="primary">
+                    <p class="text-faded" ng-bind="description"></p>
+                    <a href="#services" style="white-space:normal" class="page-scroll btn btn-default btn-xl sr-button" ng-bind="windowsBtn"></a>
+                    <a href="#services" style="white-space:normal" class="page-scroll btn btn-default btn-xl sr-button" ng-bind="androidBtn"></a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="no-padding bg-danger" id="videos">
+        <div class="container" ng-controller="iframeCtrl">
+            <h2 style="text-align:center" ng-bind="main"></h2>
+            <hr class="primary">
+            <div class="row">
+                <div class="embed-responsive embed-responsive-16by9 col-sm-6 spacing vidHeight">
+                    <iframe class="col-sm-6" id="vid_frame" ng-src={{videoFrame}} frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <!-- THE PLAYLIST -->
+                <div class="col-sm-6 container">
+                    <div id="video" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <ol class="carousel-indicators">
+                            <li data-target="#video" ng-repeat="video in videos" ng-class="{active: (video === 0)}" data-slide-to="{{video}}"></li>
+                        </ol>
+
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="item" ng-class="{active:$index == 0}" ng-repeat="video in videos" ng-click="playVideo(video.url)">
+                                <img ng-src={{video.image}} width="1500" height="1200">
+                                <div class="container">
+                                    <div class="carousel-caption">
+                                        <h2 ng-bind="video.title"></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#video" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#video" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="services" class="bg-info" ng-controller="servicesCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" ng-bind="main"></h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center" ng-repeat="service in services">
+                    <div class="service-box">
+                        <i class={{service.fontAwesome}}></i>
+                        <h3 ng-bind="service.title"></h3>
+                        <p class="text-muted" ng-bind="service.description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="clients" style="background-color:#8FBC8F" ng-controller="clientsCtrl">
+        <h2 class="section-heading" style="text-align:center" ng-bind="main"></h2>
+        <hr class="primary">
+        <marquee style="overflow:hidden">
+            <img ng-src={{image}} height="169px" width="200px" ng-repeat="image in images">
+        </marquee>
+    </section>
+
+    <section id="contact" style="background-color:#D2B48C" ng-controller="contactCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading" ng-bind="main"></h2>
+                    <hr class="primary">
+                    <p ng-bind="description"></p>
+                </div>
+                <div ng-class="contact.bootstrap" ng-repeat="contact in contactDetails">
+                    <h3 style="color:brown" ng-bind="contact.place"></h3>
+                    <i class={{contact.fAPhone}}></i>
+                    <p>General Enquiry: <span ng-bind="contact.generalPhone"></span></p>
+                    <p>Sales Enquiry: <span ng-bind="contact.salesPhone"></span></p>
+                    <i class={{contact.fAMap}}></i>
+                    <address ng-bind="contact.address"></address>
+                    <i class={{contact.fAMail}}></i>
+                    <p>Enquiry: <a href="mailto:vguruhelp@skandvlsi.com"><span ng-bind="contact.generalMail"></span></a></p>
+                    <p>Sales Enquiry: <a href="mailto:sales@skandvlsi.com"><span ng-bind="contact.salesMail"></span></a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer fixed-bottom" style="background-color:black;padding-top:2%;padding-bottom:2%">
+        <div class="container text-center" style="color:white" ng-controller="footerCtrl">
+            <small class="copyright" ng-bind="copyRight"></small>
+            <div class="container text-center">
+                <div>
+                    <a href={{social.url}} target="_blank" ng-repeat="social in socialNetworks"><small style="color:white;margin-right:10px" class={{social.icon}}></small></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="dist/all.js"></script>
+    
+
+</body>
+
+</html>

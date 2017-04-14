@@ -1,0 +1,42 @@
+{
+  "name": "creative",
+  "title": "Creative",
+  "version": "3.3.7+1",
+  "homepage": "http://startbootstrap.com/template-overviews/creative",
+  "author": "Start Bootstrap",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "browser-sync": "^2.13.0",
+    "font-awesome": "^4.6.3",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-header": "^1.8.7",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-inject": "^4.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-less": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.4",
+    "gulp-uglifycss": "^1.0.8",
+    "jquery": "^1.11.3",
+    "jshint": "^2.9.4",
+    "magnific-popup": "^1.1.0",
+    "pump": "^1.0.2",
+    "scrollreveal": "^3.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BlackrockDigital/startbootstrap-creative.git"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "jshint": "^2.9.4",
+    "jslint": "^0.10.3"
+  }
+}
